@@ -1,0 +1,49 @@
+{% extends "farmer/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+    <table class="table table-bordered" align="center">
+  <tr style="background: #4DC7A0; color: #000;">
+    <td>SL NO</td>
+    <td>DATE</td>
+    <td>PRODUCT NAME</td>
+    <td>DESCRIPTION</td>
+    <td>PRICE</td>
+    <td>QUANTITY</td>
+    <td>AMOUNT</td>
+    <td>FARMER DETAILS</td>
+    <td>&nbsp;</td>
+   
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ loop.index }}</td>
+    <td>{{ i.date }}&nbsp;</td>
+    <td>&nbsp;{{ i.item_name }}</td>
+    <td>&nbsp;{{ i.item_description }}</td>
+    <td>&nbsp;{{ i.item_price }}</td>
+    <td>&nbsp;{{ i.quantity }}</td>
+    <td>&nbsp;{{ i.amount }}</td>
+    <td>&nbsp;{{ i.farmername }}<br>{{ i.phone }}</td>
+    <td >
+        {% if i.status == "approved" %}
+            <a href="/f_add_payment/{{ i.req_id }}/{{ i.amount }}/{{ i.fid }}" class="btn btn-outline-info">Payment</a><br>
+        {% elif i.status == "Paid" %}
+            <a href="/f_add_review/{{ i.product_id }}/{{ i.req_id }}" class="btn btn-outline-info">ADD REVIEW</a>
+        {% else %}
+           {{ i.status }}
+        {% endif %}
+    </td>
+
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "admin/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered" align="center">
+  <tr style="background: #4DC7A0; color: #000;">
+      <th scope="col">SL NO</th>
+      <th  scope="col"> NAME OF OFFICE</th>
+      <th  scope="col">CONTACT NUMBER</th>
+      <th  scope="col">E-MAIL</th>
+      <th  scope="col">&nbsp;</th>
+      <th  scope="col">&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['contact_name'] }}</td>
+      <td>{{ i['contact_number'] }}</td>
+      <td>&nbsp;{{ i['email'] }}</td>
+      <td><a href="/admin_edit_contact/{{ i['contact_id'] }}#content"  class="btn btn-outline-info">EDIT</a></td>
+      <td><a href="/admin_delete_contact/{{ i['contact_id'] }}#content" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger">DELETE</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

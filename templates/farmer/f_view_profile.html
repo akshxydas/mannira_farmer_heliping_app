@@ -1,0 +1,49 @@
+{% extends "farmer/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered" align="center">
+  <tr style="background: #9ad6aa;">
+      <td style="color: #000000"><b>NAME</b></td>
+      <td><input type="text"  name="textfield" id="textfield" value="{{ data.farmername }}" class="form-control"/></td>
+    </tr>
+  <tr style="background: #9ad6aa;">
+      <td style="color: #000000"><b>HOUSE</b></td>
+      <td><input type="text" name="textfield2" id="textfield2" value="{{ data.house }}" class="form-control" /></td>
+    </tr>
+  <tr style="background: #9ad6aa;">
+      <td style="color: #000000"><b>PLACE</b></td>
+      <td><input type="text" name="textfield3" id="textfield3" value="{{ data.place }}" class="form-control"  /></td>
+    </tr>
+  <tr style="background: #9ad6aa;">
+      <td style="color: #000000"><b>PIN</b></td>
+      <td><input type="text" name="textfield4" id="textfield4" value="{{ data.pin }}" class="form-control" /></td>
+    </tr>
+  <tr style="background: #9ad6aa;">
+      <td style="color: #000000"><b>CONTACT</b></td>
+      <td><input type="text" name="textfield5" id="textfield5" value="{{ data.phone }}"  class="form-control"/></td>
+    </tr>
+  <tr style="background: #9ad6aa;">
+      <td style="color: #000000"><b>E-MAIL</b></td>
+      <td><input type="text" name="textfield6" id="textfield6" value="{{ data.email }}"  class="form-control"readonly /></td>
+    </tr>
+   
+  <tr style="background: #9ad6aa;">
+      <td colspan="2"><div align="center">
+{#        <input type="submit" name="button" id="button" value="UPDATE" class="btn btn-success" />#}
+                  <input type="submit" name="button" id="button" value="UPDATE" class="btn btn-success" />
+
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

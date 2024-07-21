@@ -1,0 +1,43 @@
+{% extends "farmer/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+    <table class="table table-bordered" align="center">
+  <tr style="background: #4DC7A0; color: #000;">
+    <td>SL NO</td>
+      <td>FARMER NAME</td>
+    <td>ITEM NAME</td>
+    <td>DATE</td>
+    <td>PRICE</td>
+    <td>DESCRIPTION</td>
+    <td>QUANTITY</td>
+    <td>&nbsp;</td>
+
+    <td>&nbsp;</td>
+
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ loop.index }}&nbsp;</td>
+     <td>{{ i['farmername'] }}&nbsp;</td>
+    <td>{{ i['item_name'] }}&nbsp;</td>
+    <td>{{ i['date'] }}&nbsp;</td>
+    <td>{{ i['item_price'] }}&nbsp;</td>
+    <td>{{ i['item_description'] }}&nbsp;</td>
+    <td>{{ i['quantity'] }}&nbsp;</td>
+    <td><a href="/f_add_product_request/{{ i.product_id }}" class="btn btn-outline-info">REQUEST</a></td>
+
+    <td><a href="/f_view_review/{{ i.product_id }}" class="btn btn-outline-success">VIEW REVIEW</a></td>
+
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

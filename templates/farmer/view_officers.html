@@ -1,0 +1,35 @@
+{% extends "farmer/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+    <table class="table table-bordered" align="center">
+  <tr style="background: #4DC7A0; color: #000;">
+    <td>SL NO</td>
+    <td>NAME</td>
+    <td>EMAIL</td>
+    <td>PHONE</td>
+    <td>PLACE</td>
+    <td>DISTRICT</td>
+    <td>&nbsp;</td>
+  </tr>
+    {% for i in data  %}
+  <tr>
+    <td>{{ loop.index }}</td>
+    <td>&nbsp;{{ i['name'] }}</td>
+    <td>&nbsp;{{ i['email'] }}</td>
+    <td>{{ i['phone'] }}</td>
+    <td>&nbsp;{{ i['place'] }}</td>
+    <td>&nbsp;{{ i['district'] }}</td>
+    <td><a href="/farmer_chat_officer/{{ i['office_id'] }}/{{ i['name'] }}#content" class="btn btn-outline-info">CHAT</a></td>
+  </tr>
+     {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

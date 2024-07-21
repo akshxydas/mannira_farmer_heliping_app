@@ -1,0 +1,43 @@
+{% extends "farmer/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+    <table class="table table-bordered" align="center">
+  <tr style="background: #4DC7A0; color: #000;">
+    <td>SL NO</td>
+    <td>DATE</td>
+    <td>FARMER NAME</td>
+    <td>PRODUCT</td>
+    <td>QUANTITY</td>
+    <td colspan="2">STATUS</td>
+   
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ loop.index }}</td>
+    <td>&nbsp;{{ i['date'] }}</td>
+    <td>&nbsp;{{ i['farmername'] }}</td>
+    <td>&nbsp;{{ i['item_name'] }}</td>
+    <td>{{ i['pd'] }}&nbsp;</td>
+      {% if i.status=='pending' %}
+    <td ><a href="/farmer_approve_request/{{ i['req_id']}}/{{ i.product_id }}/{{ i.pd }}" class="btn btn-outline-success">APPROVE</a></td>
+    <td ><a href="/farmer_reject_request/{{ i['req_id']}}" class="btn btn-outline-danger">REJECT</a></td>
+    {% else %}
+      <td colspan="2">{{ i.status }}
+      <br>
+
+                        <a href="/f_add_schedule/{{ i['req_id']}}" class="btn btn-outline-info">Add Schedule</a></td>
+  {% endif %}
+
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

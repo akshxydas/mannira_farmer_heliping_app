@@ -1,0 +1,59 @@
+{% extends "officer/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="" method="post">
+  <table class="table table-bordered" align="center">
+  <tr style="background: #4DC7A0; color: #000;">
+        <th>Type</th>
+        <td><select name="t">
+            <option>crop</option>
+            <option>machine</option>
+            <option>fertilizer</option>
+        </select> </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center"><input type="submit" value="select" /></td>
+
+    </tr>
+</table>
+  <table class="table table-bordered" align="center">
+  <tr style="background: #4DC7A0; color: #000;">
+    <th width="24" scope="col">SL NO</th>
+    <th width="41" scope="col">DATE</th>
+    <th width="72" scope="col">FARMER INFO</th>
+    <th width="46" scope="col">ITEM INFO</th>
+    <th width="46" scope="col">QUANTITY</th>
+{#    <th width="39" scope="col">TYPE</th>#}
+    <th width="4" scope="col">&nbsp;</th>
+
+  </tr>
+        {% for i in data  %}
+  <tr>
+    <td>{{ loop.index }}</td>
+    <td>{{ i['d'] }}</td>
+    <td>{{ i['farmername'] }}</td>
+    <td>{{ i['n'] }}</td>
+    <td>{{ i['quantity'] }}</td>
+{#    <td>{{ i['type'] }}</td>#}
+      {% if i.status=='pending' %}
+          <td><a href="/officer_approve_request/{{ i['request_id']}}" class="btn btn-success">APPROVE</a><br></td>
+          <td>
+    <a href="/officer_reject_request/{{ i['request_id']}}"class="btn btn-danger">REJECT</a></td>
+  {% else %}
+ <td>{{ i.status }}</td>
+  {% endif %}
+  </tr>
+     {% endfor %}
+
+</table>
+</form>
+</body>
+</html>
+{% endblock %}
